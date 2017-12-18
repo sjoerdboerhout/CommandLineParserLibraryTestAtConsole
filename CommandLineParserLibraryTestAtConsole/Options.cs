@@ -6,13 +6,15 @@ namespace CommandLineParserLibraryTestAtConsole
 {
   class Options
   {
-    [VerbOption("mix")]
-    public MixVerbSubOptions MixVerb { get; set; }
+    [VerbOption("set")]
+    public SetVerbSubOptions SetVerb { get; set; }
 
 
-    [VerbOption("cook")]
-    public CookVerbSubOptions CookVerb { get; set; }
+    [VerbOption("wait")]
+    public WaitVerbSubOptions WaitVerb { get; set; }
 
+    [ParserState]
+    public IParserState LastParserState { get; set; }
 
     // Remainder omitted
     [HelpVerbOption]

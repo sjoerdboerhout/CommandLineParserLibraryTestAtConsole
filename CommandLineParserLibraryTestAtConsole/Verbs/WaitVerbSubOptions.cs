@@ -2,7 +2,7 @@
 
 namespace CommandLineParserLibraryTestAtConsole
 {
-  class CookVerbSubOptions
+  class WaitVerbSubOptions
   {
     [Option("mins", Required = true)]
     public int CookingMinutes { get; set; }

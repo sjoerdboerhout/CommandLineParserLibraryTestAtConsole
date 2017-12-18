@@ -11,7 +11,7 @@ namespace CommandLineParserLibraryTestAtConsole
       try
       {
         var options = new Options();
-        CommandLine.Parser.Default.ParseArguments(args, options, OnVerbCommand);
+        CommandLine.Parser.Default.ParseArgumentsStrict(args, options, OnVerbCommand, OnFail);
 
         Console.ReadLine();
       }
@@ -21,27 +21,21 @@ namespace CommandLineParserLibraryTestAtConsole
       }
     }
 
+    private static void OnFail()
+    {
+      Console.WriteLine("Something went wrong...");
+
+    }
+
     private static void OnVerbCommand(string verbName, object verbSubOptions)
     {
-      if( verbSubOptions is MixVerbSubOptions)
+      if( verbSubOptions is SetVerbSubOptions)
       {
-        var mixSubOptions = (MixVerbSubOptions)verbSubOptions;
+        var setSubOptions = (SetVerbSubOptions)verbSubOptions;
       }
-      else if(verbSubOptions is CookVerbSubOptions)
+      else if(verbSubOptions is WaitVerbSubOptions)
       {
-        var cookSubOptions = (CookVerbSubOptions)verbSubOptions;
-      }
-
-      switch(verbName)
-      {
-        case "mix":
-          var mixSubOptionsX = (MixVerbSubOptions)verbSubOptions;
-        break;
-
-        case "cook":
-          var cookSubOptionsX = (CookVerbSubOptions)verbSubOptions;
-        break;
-
+        var waitSubOptions = (WaitVerbSubOptions)verbSubOptions;
       }
     }
   }
